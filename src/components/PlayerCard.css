@@ -1,0 +1,16 @@
+.getPlayerButton {
+  margin-left: 1.5rem;
+}
+
+.playerInfo {
+  text-align: left;
+  margin: 2rem 0 0 4rem;
+}
+
+.playerName {
+  color: white;
+}
+
+.playerName:visited {
+  color: white;
+}
