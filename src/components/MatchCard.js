@@ -2,7 +2,7 @@ import React from 'react';
 import './MatchCard.css';
 import heroList from './HeroList';
 
-const MatchCard = ({ matches, heroes, numOfResults }) => {
+const MatchCard = ({ matches, numOfResults }) => {
   if (!matches) return null;
   console.log(matches)
 
@@ -15,7 +15,6 @@ const MatchCard = ({ matches, heroes, numOfResults }) => {
                 var team = '';
                 if (player_slot <= 127) team = 'Radiant';
                 if (player_slot >= 128) team = 'Dire';
-                var hours = Math.floor(duration / 60 / 60);
                 var minutes = Math.floor(duration / 60);
                 var seconds = duration % 60
 
@@ -29,7 +28,7 @@ const MatchCard = ({ matches, heroes, numOfResults }) => {
                             {` Team: ${team}, Match outcome: ${(radiant_win && team==='Radiant')|(!radiant_win && team==='Dire') ? 'Win' : 'Loss'} `}
                         </div>
                         <div className="time">
-                            {` Game length: ${hours + ':' + minutes + ':' + seconds}, Hero: ${heroList.find((hero) => hero.id===hero_id).localized_name}, GPM: ${gold_per_min}, XPM: ${xp_per_min}, LH: ${last_hits}, Damage Dealt: ${hero_damage} `}
+                            {` Game length: ${minutes + ':' + seconds}, Hero: ${heroList.find((hero) => hero.id===hero_id).localized_name}, GPM: ${gold_per_min}, XPM: ${xp_per_min}, LH: ${last_hits}, Damage Dealt: ${hero_damage} `}
                         </div>
                     </div>
                 );
