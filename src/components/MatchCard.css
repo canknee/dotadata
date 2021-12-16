@@ -1,10 +1,38 @@
-  .matchCardInfo {
-    text-align: left;
-    margin: 0 0 0 4rem;
-    padding-bottom: 2rem;
-  }
+.matches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
 
-  .matches {
-    margin: 0 0 0 0;
-    padding-bottom: 2rem;
-  }
+.matchCard {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  width: 20rem;
+}
+
+.matchId {
+  font-size: 0.75rem;
+}
+
+.matchResult {
+  font-size: 1.25rem;
+}
+
+.matchVictory {
+  color: green;
+  font-weight: bold;
+}
+
+.matchDefeat {
+  color: red;
+  font-weight: bold;
+}
+
+.duration {
+  font-size: 0.9rem;
+  margin-top: -0.375rem;
+}
+
+.hero {
+  font-size: 1.1rem;
+}
