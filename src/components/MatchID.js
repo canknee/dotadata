@@ -5,6 +5,7 @@ const MatchID = ({ match, heroes }) => {
     if (!match) return null;
     var minutes = Math.floor(match.duration / 60);
     var seconds = ('0' + match.duration % 60).slice(-2)
+    console.log(match.players[0].kills)
     return (
         <div>
             <p>Match Details: </p>
@@ -18,6 +19,12 @@ const MatchID = ({ match, heroes }) => {
                 <div className="score">
                     {` Radiant: ${match.radiant_score} Dire: ${match.dire_score} `}
                 </div>
+                {/* Running into problem where I can't access and destructure match.players in the GET/matches/{match_id}... kills is returning a ';' */}
+                {match.players.map(({kills}) => {
+                    <div className="player1">
+                        {`test ${kills} `}
+                    </div>
+                })};
         </div>
     )
   }
