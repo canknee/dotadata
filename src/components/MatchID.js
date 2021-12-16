@@ -4,7 +4,7 @@ import heroList from './HeroList';
 const MatchID = ({ match, heroes }) => {
     if (!match) return null;
     var minutes = Math.floor(match.duration / 60);
-    var seconds = match.duration % 60
+    var seconds = ('0' + match.duration % 60).slice(-2)
     return (
         <div>
             <p>Match Details: </p>

@@ -16,8 +16,7 @@ const MatchCard = ({ matches, numOfResults }) => {
                 if (player_slot <= 127) team = 'Radiant';
                 if (player_slot >= 128) team = 'Dire';
                 var minutes = Math.floor(duration / 60);
-                var seconds = duration % 60
-
+                var seconds = ('0' + duration % 60).slice(-2)
                 return (
                     <div className='matches'>
                         Match ID: <a target="_blank" rel="noreferrer" href={`https://www.opendota.com/matches/${match_id}`} className="matches"> {match_id}</a>
