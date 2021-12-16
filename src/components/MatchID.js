@@ -1,4 +1,5 @@
 import React from 'react';
+import './MatchCard.css'
 import heroList from './HeroList';
 
 const MatchID = ({ match, heroes }) => {
@@ -6,6 +7,7 @@ const MatchID = ({ match, heroes }) => {
     var minutes = Math.floor(match.duration / 60);
     var seconds = ('0' + match.duration % 60).slice(-2)
     console.log(match.players[0].kills)
+
     return (
         <div>
             <p>Match Details: </p>
@@ -19,12 +21,14 @@ const MatchID = ({ match, heroes }) => {
                 <div className="score">
                     {` Radiant: ${match.radiant_score} Dire: ${match.dire_score} `}
                 </div>
-                {/* Running into problem where I can't access and destructure match.players in the GET/matches/{match_id}... kills is returning a ';' */}
-                {match.players.map(({kills}) => {
-                    <div className="player1">
-                        {`test ${kills} `}
-                    </div>
-                })};
+                {match.players.map(({personaname, kills, deaths, assists, hero_id, last_hits, denies, player_slot}) => {
+                    var team = '';
+                    if (player_slot <= 127) team = 'Radiant';
+                    if (player_slot >= 128) team = 'Dire';
+                    return (<div className="players">
+                        {`${personaname} | ${team} Hero: ${heroList.find((hero) => hero.id===hero_id).localized_name} | Kills: ${kills}, Death: ${deaths}, Assists: ${assists} LH: ${last_hits}, Denies: ${denies}`}
+                    </div>)
+                })}    
         </div>
     )
   }
