@@ -19,12 +19,12 @@
 }
 
 .matchVictory {
-  color: green;
+  color: rgb(20, 165, 20);
   font-weight: bold;
 }
 
 .matchDefeat {
-  color: red;
+  color: rgb(255, 62, 62);
   font-weight: bold;
 }
 
