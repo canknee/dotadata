@@ -4,17 +4,17 @@ import PlayerCard from './components/PlayerCard';
 import MatchCard from './components/MatchCard';
 import { Navbar, Nav, NavDropdown, Container, Form, FormControl, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MatchID from './components/MatchID'
+import MatchId from './components/MatchId'
 import './App.css';
 
-
-// 76561198350848550 64bit tho
-// 76561198067021926
-// 76561197960265728
+// 76561198067021926 64 bit example, conversion to 32 works
 
 // 390582822 cabeezy
 // 106756198 citius
 // 96502423 cam
+
+// match
+// 6320960526
 
 const App = () => {
 
@@ -136,8 +136,8 @@ const App = () => {
 
       <main>
         {/* Form for players */}
-        <form onSubmit={(e) => {
-          e.preventDefault();
+        <form onSubmit={(ev) => {
+          ev.preventDefault();
           getPlayer(playerId);
           getMatches(playerId);
           getWinLoss(playerId);
@@ -148,7 +148,7 @@ const App = () => {
             name='playerId' 
             type='text'
             value={playerId}
-            onChange={e => setPlayerId(e.target.value)}
+            onChange={ev => setPlayerId(ev.target.value)}
           />
           <input className="submitButton" type='submit' value="Get Player" />
         </form>
@@ -172,7 +172,7 @@ const App = () => {
         <PlayerCard player={player} winLoss={winLoss} />
         <hr />
         <MatchCard  matches={matches} numOfResults={6} />
-        <MatchID match={match} />
+        <MatchId match={match} />
       </main>
     </div>
   );

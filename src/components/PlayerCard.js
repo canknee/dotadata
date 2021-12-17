@@ -4,7 +4,6 @@ import './PlayerCard.css';
 
 const PlayerCard = ({ player, winLoss }) => {
   if (!player) return null;
-  console.log(player)
   return (
     <div className="playerInfo">
       <img className="playerAvatar" src={player.profile.avatarfull} alt="player avatar" />
