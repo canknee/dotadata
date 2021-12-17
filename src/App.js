@@ -1,11 +1,11 @@
+/* global BigInt */
 import React, { useState } from 'react';
 import PlayerCard from './components/PlayerCard';
 import MatchCard from './components/MatchCard';
-import WinLoss from './components/WinLoss'
-import './App.css';
 import { Navbar, Nav, NavDropdown, Container, Form, FormControl, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MatchID from './components/MatchID'
+import './App.css';
 
 
 // 76561198350848550 64bit tho
@@ -20,14 +20,18 @@ const App = () => {
 
   const [playerId, setPlayerId] = useState('');
   const [player, setPlayer] = useState('');
-  const [winloss, setWinLoss] = useState('');
+  const [winLoss, setWinLoss] = useState('');
   const [matches, setMatches] = useState(''); // for match details from playerID
   const [match, setMatch] = useState(''); // for match details from matchID
   const [matchId, setMatchId] = useState('');
 
+  const standardize32 = (bigNum) => {
+    return BigInt(bigNum) < BigInt("76561197960265728") ? bigNum : BigInt(bigNum) - BigInt("76561197960265728");
+  }
+
   const getPlayer = (playerId) => {
     if(!playerId) return;
-    fetch(`/players/${playerId}`).then(
+    fetch(`/players/${standardize32(playerId)}`).then(
     (res) => {
       if (!res.ok) {
         throw new Error(res.statusText);
@@ -43,7 +47,7 @@ const App = () => {
 
   const getWinLoss = (playerId) => {
     if(!playerId) return;
-    fetch(`/players/${playerId}/wl`).then(
+    fetch(`/players/${standardize32(playerId)}/wl`).then(
     (res) => {
       if (!res.ok) {
         throw new Error(res.statusText);
@@ -60,7 +64,7 @@ const App = () => {
   // Function for getting match details via player's recent matches
   const getMatches = (playerId) => {
     if(!playerId) return;
-    fetch(`/players/${playerId}/recentMatches`).then(
+    fetch(`/players/${standardize32(playerId)}/recentMatches`).then(
     (res) => {
       if (!res.ok) {
         throw new Error(res.statusText);
@@ -91,12 +95,10 @@ const App = () => {
     });
   };
 
-  console.log(match)
-
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
-        <Container fluid>
+        <Container fluid="xl">
           <Navbar.Brand href="/">DotaData</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -132,7 +134,7 @@ const App = () => {
         </Container>
       </Navbar>
 
-
+      <main>
         {/* Form for players */}
         <form onSubmit={(e) => {
           e.preventDefault();
@@ -141,14 +143,14 @@ const App = () => {
           getWinLoss(playerId);
         }}>
           <label>Player ID:</label>
-          <br />
-          <input 
+          <input
+            className="textInput"
             name='playerId' 
             type='text'
             value={playerId}
             onChange={e => setPlayerId(e.target.value)}
           />
-          <input className="getPlayerButton" type='submit' value="Get Player" />
+          <input className="submitButton" type='submit' value="Get Player" />
         </form>
 
         {/* Form for matches */}
@@ -157,21 +159,21 @@ const App = () => {
           getMatch(matchId);
         }}>
           <label>Match ID:</label>
-          <br />
-          <input 
+          <input
+            className="textInput"
             name='matchId' 
             type='text'
             value={matchId}
             onChange={ev => setMatchId(ev.target.value)}
           />
-          <input className="getMatchButton" type='submit' value="Get Match" />
+          <input className="submitButton" type='submit' value="Get Match" />
         </form>
 
-      <PlayerCard player={player} />
-      <WinLoss winloss={winloss}/>
-      <MatchCard  matches={matches} numOfResults={5} />
-      <MatchID match={match} />
-
+        <PlayerCard player={player} winLoss={winLoss} />
+        <hr />
+        <MatchCard  matches={matches} numOfResults={6} />
+        <MatchID match={match} />
+      </main>
     </div>
   );
 }

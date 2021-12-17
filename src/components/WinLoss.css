@@ -1,5 +1,12 @@
+.winloss {
+  text-align: left;
+  margin: 0 0 0 4rem;
+}
 
-  .winloss {
-    text-align: left;
-    margin: 0 0 0 4rem;
-  }
+.winCount {
+  color: rgb(20, 165, 20);
+}
+
+.lossCount {
+  color: rgb(255, 62, 62);
+}

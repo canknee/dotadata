@@ -1,19 +1,49 @@
-
-
 .App {
-  text-align: center;
-  background-color: #282c34;
+  background-image: linear-gradient(
+    45deg,
+    rgb(104, 28, 28),
+    rgb(121, 78, 78),
+    rgb(104, 28, 28)
+  );
   color: white;
+  min-height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+main {
+  padding: 1rem;
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  main {
+    padding: 4rem;
+    max-width: 80rem;
+  }
 }
 
-.App-header {
-  display: flex;
-  text-align: right;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+label {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+  display: block;
+}
+
+.textInput {
+  background: rgb(233, 206, 206);
+  border-radius: 0.25rem;
+}
+
+.submitButton {
+  margin-left: 0.5rem;
+  background: rgb(233, 206, 206);
+  border-radius: 0.25rem;
+}
+
+a {
+  color: rgb(255, 255, 255);
+}
+a:visited {
+  color: rgb(255, 255, 255);
+}
+a:hover {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
 }
