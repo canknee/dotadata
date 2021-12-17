@@ -2,3 +2,87 @@
   background-color: rgba(0, 0, 0, 0.4);
   padding: 2rem;
 }
+
+.headerSection {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .headerSection {
+    flex-direction: row;
+  }
+  .matchWinnerWrapper {
+    width: 33%;
+  }
+  .matchScore {
+    width: 33%;
+  }
+  .headerSection .matchGeneralInfo {
+    width: 33%;
+    text-align: right;
+    margin: 0;
+  }
+}
+
+.matchWinner {
+  font-size: 1.75rem;
+  padding: 0 1rem;
+  height: 3rem;
+}
+
+.Radiant {
+  color: rgb(20, 165, 20);
+}
+.matchWinner.Radiant {
+  width: 14rem;
+  background-image: linear-gradient(
+    to left,
+    rgba(20, 165, 20, 0),
+    rgba(20, 165, 20, 0.15) 10% 90%,
+    rgba(20, 165, 20, 0)
+  );
+}
+.Dire {
+  color: rgb(255, 62, 62);
+}
+.matchWinner.Dire {
+  width: 12rem;
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 62, 62, 0),
+    rgba(255, 62, 62, 0.15) 10% 90%,
+    rgba(255, 62, 62, 0)
+  );
+}
+
+.matchScore {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.matchLength {
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 0;
+  margin-top: 0.25rem;
+}
+
+.matchGeneralInfo {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.tableSection {
+  margin-top: 2rem;
+}
+
+.heroIconImages {
+  margin-right: 0.5rem;
+}
+
+th {
+  min-width: 6rem;
+}
