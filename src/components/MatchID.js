@@ -43,4 +43,3 @@ const MatchId = ({ match }) => {
   }
 
 export default MatchId;
-

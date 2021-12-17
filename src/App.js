@@ -25,6 +25,8 @@ const App = () => {
   const [match, setMatch] = useState(''); // for match details from matchID
   const [matchId, setMatchId] = useState('');
 
+
+
   const standardize32 = (bigNum) => {
     return BigInt(bigNum) < BigInt("76561197960265728") ? bigNum : BigInt(bigNum) - BigInt("76561197960265728");
   }
@@ -95,6 +97,26 @@ const App = () => {
     });
   };
 
+  const [isPlayer, setIsPlayer] = useState(true);
+  const formIsPlayer = (isPlayer) => {
+    if (isPlayer) {
+      return(
+        <div>
+        <PlayerCard player={player} winLoss={winLoss} />
+        <hr />
+        <MatchCard  matches={matches} numOfResults={6} />
+        </div>
+        )
+    } else {
+      return (
+        <div>
+          <MatchId match={match} />
+        </div>
+      )
+    }
+  }
+
+
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -141,6 +163,7 @@ const App = () => {
           getPlayer(playerId);
           getMatches(playerId);
           getWinLoss(playerId);
+          setIsPlayer(true);
         }}>
           <label>Player ID:</label>
           <input
@@ -157,6 +180,7 @@ const App = () => {
         <form onSubmit={(ev) => {
           ev.preventDefault();
           getMatch(matchId);
+          setIsPlayer(false)
         }}>
           <label>Match ID:</label>
           <input
@@ -168,11 +192,7 @@ const App = () => {
           />
           <input className="submitButton" type='submit' value="Get Match" />
         </form>
-
-        <PlayerCard player={player} winLoss={winLoss} />
-        <hr />
-        <MatchCard  matches={matches} numOfResults={6} />
-        <MatchId match={match} />
+        {formIsPlayer(isPlayer)}
       </main>
     </div>
   );
